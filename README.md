@@ -118,7 +118,7 @@ naomi-luxe/
    Fill in your Supabase credentials:
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
    NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
    DATABASE_URL=postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres
    ```
@@ -240,7 +240,7 @@ await NotificationService.notifyBookingConfirmed(userId, {
 ### Environment Variables
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_anon_key
 NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 DATABASE_URL=your_database_url
 ```
