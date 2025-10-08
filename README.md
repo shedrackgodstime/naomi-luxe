@@ -1,36 +1,274 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌸 Naomi Luxe
 
-## Getting Started
+> **Premium Beauty & Fashion Platform** - A luxury beauty salon and e-commerce platform combining salon services, fashion retail, and online booking.
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-green?style=flat-square&logo=supabase)](https://supabase.com/)
+[![Drizzle ORM](https://img.shields.io/badge/Drizzle-ORM-orange?style=flat-square)](https://orm.drizzle.team/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🎯 Project Overview
+
+**Naomi Luxe** is a comprehensive platform that serves as:
+
+- **🏪 E-commerce Store** - Sell shoes, clothes, and accessories
+- **💇 Beauty Salon Portfolio** - Showcase salon works and services  
+- **📅 Booking System** - Online appointment scheduling
+- **👑 Admin Dashboard** - Content and order management
+
+Built with modern web technologies and designed for luxury clientele seeking premium beauty services and fashion items.
+
+## ✨ Features
+
+### 🛍️ E-commerce
+- **Product Catalog** - Shoes, clothes, and accessories
+- **Shopping Cart** - Seamless shopping experience
+- **Order Management** - Track orders and payments
+- **Inventory Management** - Stock tracking and updates
+
+### 💇 Salon Services
+- **Service Booking** - Online appointment scheduling
+- **Portfolio Gallery** - Showcase salon works
+- **Service Management** - Pricing and duration tracking
+- **Booking Calendar** - Available time slots
+
+### 🔔 Advanced Notifications
+- **Real-time Updates** - Instant notification delivery
+- **Multi-channel** - Email, push, and SMS notifications
+- **User Preferences** - Granular notification control
+- **Smart Templates** - Pre-built notification messages
+
+### 👑 Admin Dashboard
+- **Content Management** - Products, services, gallery
+- **Order Processing** - Manage orders and payments
+- **Booking Management** - Appointment scheduling
+- **Analytics** - Sales and booking reports
+
+## 🚀 Tech Stack
+
+### Frontend
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Modern UI components
+
+### Backend
+- **Supabase** - Backend-as-a-Service
+  - **PostgreSQL** - Database
+  - **Auth** - Authentication & authorization
+  - **Storage** - File storage
+  - **Real-time** - Live updates
+- **Drizzle ORM** - Type-safe database operations
+
+### Development
+- **Biome** - Linting and formatting
+- **Drizzle Kit** - Database migrations
+- **Turbopack** - Fast development builds
+
+## 📁 Project Structure
+
+```
+naomi-luxe/
+├── 📁 app/                    # Next.js App Router
+│   ├── 📁 (site)/            # Public site routes
+│   ├── 📁 admin/             # Admin dashboard
+│   └── 📁 shop/              # E-commerce routes
+├── 📁 src/
+│   ├── 📁 db/                # Database layer
+│   │   ├── schema.ts         # Database schema
+│   │   └── 📁 queries/       # Database operations
+│   ├── 📁 libs/              # Core libraries
+│   │   ├── 📁 supabase/      # Supabase integration
+│   │   └── 📁 notifications/ # Notification system
+│   ├── 📁 config/            # App configuration
+│   └── 📁 types.ts           # TypeScript definitions
+├── 📁 README/                # Detailed documentation
+└── 📁 drizzle/              # Database migrations
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+- Supabase account
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd naomi-luxe
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Environment Setup**
+   ```bash
+   cp env.example .env.local
+   ```
+   
+   Fill in your Supabase credentials:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+   DATABASE_URL=postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Database Setup**
+   ```bash
+   # Push schema to database
+   npm run db:push
+   
+   # Or generate migrations
+   npm run db:generate
+   npm run db:migrate
+   ```
 
-## Deploy on Vercel
+5. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. **Open in Browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📚 Documentation
+
+This project includes comprehensive documentation in the `README/` directory:
+
+### 📋 Core Documentation
+- **[PROJECT_PLAN.md](./README/PROJECT_PLAN.md)** - Complete project overview and roadmap
+- **[DATABASE-PLAN.md](./README/DATABASE-PLAN.md)** - Database schema and storage structure
+- **[NOTIFICATIONS_SETUP.md](./README/NOTIFICATIONS_SETUP.md)** - Advanced notification system guide
+- **[DRIZZLE_SETUP.md](./README/DRIZZLE_SETUP.md)** - Database ORM setup and usage
+
+### 🔧 Development Guides
+- **Database Schema** - Complete table definitions and relationships
+- **Notification System** - Real-time notification implementation
+- **Authentication** - Supabase Auth integration
+- **API Design** - Type-safe database operations
+
+## 🎨 Design System
+
+### Brand Identity
+- **Colors**: Gold, black, cream, white
+- **Typography**: Serif headings, sans-serif body
+- **Style**: Luxury, minimal, elegant
+- **Target**: Premium clientele
+
+### UI Components
+Built with shadcn/ui for consistent, accessible components:
+- Navigation, Cards, Tables, Modals
+- Forms, Buttons, Inputs
+- Responsive design patterns
+
+## 🚀 Development Scripts
+
+```bash
+# Development
+npm run dev          # Start development server with Turbopack
+npm run build        # Build for production
+npm run start        # Start production server
+
+# Code Quality
+npm run lint         # Run Biome linter
+npm run format       # Format code with Biome
+
+# Database
+npm run db:generate  # Generate migrations
+npm run db:migrate   # Run migrations
+npm run db:push      # Push schema to database
+npm run db:studio    # Open Drizzle Studio
+```
+
+## 🗄️ Database Schema
+
+### Core Tables
+- **products** - E-commerce inventory
+- **orders** - Purchase transactions
+- **order_items** - Order line items
+- **services** - Salon services
+- **bookings** - Appointment scheduling
+- **gallery** - Portfolio images
+- **testimonials** - Customer reviews
+- **notifications** - Real-time notifications
+- **homepage_content** - CMS content
+
+### Key Features
+- **Type Safety** - Full TypeScript integration
+- **Relationships** - Proper foreign key constraints
+- **Real-time** - Supabase real-time subscriptions
+- **Security** - Row Level Security (RLS) policies
+
+## 🔔 Notification System
+
+### Features
+- **12 Notification Types** - Booking, Order, Payment, Product, System
+- **Real-time Delivery** - Instant notification updates
+- **User Preferences** - Granular notification control
+- **Template System** - Pre-built notification messages
+- **Multi-channel** - Email, push, and SMS support
+
+### Usage
+```typescript
+import { NotificationService } from "@/src/libs/notifications/service";
+
+// Send booking confirmation
+await NotificationService.notifyBookingConfirmed(userId, {
+  serviceName: "Hair Cut",
+  date: "2024-01-15",
+  time: "14:30"
+});
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
+
+### Environment Variables
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+DATABASE_URL=your_database_url
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is private and proprietary to Naomi Luxe.
+
+## 👥 Team
+
+- **Lead Developer**: Kristency
+- **Client**: Naomi (Naomi Luxe Brand)
+
+## 📞 Support
+
+For support and questions:
+- **Email**: info@naomi-luxe.com
+- **Phone**: +234-800-000-0000
+- **Address**: 123 Elegance Avenue, Lagos, Nigeria
+
+---
+
+**Built with ❤️ for luxury beauty and fashion**
