@@ -1,8 +1,8 @@
 "use server";
 
 import { neon } from "@neondatabase/serverless";
-import { safeHandler } from "../safe-exec";
-import type { LogEntry, LogsFilters, LogsPagination, LogsResponse } from "./";
+import { safeHandler } from ".";
+import type { LogEntry, LogsFilters, LogsPagination, LogsResponse } from ".";
 
 // Types for SQL query results
 interface LevelCountResult {

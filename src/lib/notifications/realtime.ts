@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createClient } from "@/src/libs/supabase/client";
+import { createClient } from "@/src/lib/supabase/client";
 
 export interface Notification {
   id: string;

@@ -11,8 +11,8 @@ import {
   getServiceById,
   updateBookingStatus,
 } from "@/src/db/queries";
-import { requireAdmin, requireAuth } from "@/src/libs/auth";
-import { sendBookingConfirmationEmail } from "@/src/libs/email";
+import { requireAdmin, requireAuth } from "@/src/lib/auth";
+import { sendBookingConfirmationEmail } from "@/src/lib/email";
 
 export async function getBookingsAction() {
   const admin = await requireAdmin();

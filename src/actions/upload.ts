@@ -2,13 +2,13 @@
 
 // File Upload Server Actions
 import { revalidatePath } from "next/cache";
-import { requireAdmin, requireAuth } from "@/src/libs/auth";
-import type { StorageBucket } from "@/src/libs/storage";
+import { requireAdmin, requireAuth } from "@/src/lib/auth";
+import type { StorageBucket } from "@/src/lib/storage";
 import {
   deleteFileServer,
   deleteMultipleFilesServer,
   uploadFileServer,
-} from "@/src/libs/storage";
+} from "@/src/lib/storage";
 
 /**
  * Upload product image (admin only)

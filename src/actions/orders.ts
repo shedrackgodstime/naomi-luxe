@@ -12,8 +12,8 @@ import {
   getProductById,
   updateOrderPaymentStatus,
 } from "@/src/db/queries";
-import { requireAdmin, requireAuth } from "@/src/libs/auth";
-import { sendOrderConfirmationEmail } from "@/src/libs/email";
+import { requireAdmin, requireAuth } from "@/src/lib/auth";
+import { sendOrderConfirmationEmail } from "@/src/lib/email";
 
 export async function getOrdersAction() {
   const admin = await requireAdmin();

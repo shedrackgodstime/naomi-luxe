@@ -1,5 +1,5 @@
 // Session management utilities
-import { createClient } from "@/src/libs/supabase/server";
+import { createClient } from "@/src/lib/supabase/server";
 import type { AuthResult, AuthSession } from "./types";
 import { userToProfile as convertUser } from "./types";
 

@@ -1,5 +1,5 @@
 // Storage client utilities (browser-side)
-import { createClient } from "@/src/libs/supabase/client";
+import { createClient } from "@/src/lib/supabase/client";
 import type {
   DeleteResult,
   StorageBucket,

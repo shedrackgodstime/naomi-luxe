@@ -1,5 +1,5 @@
 // Storage server utilities (server-side)
-import { createClient } from "@/src/libs/supabase/server";
+import { createClient } from "@/src/lib/supabase/server";
 import type { DeleteResult, StorageBucket, UploadResult } from "./types";
 import { generateFileName } from "./types";
 

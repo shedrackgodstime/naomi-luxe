@@ -13,7 +13,7 @@ import {
   markNotificationAsRead,
   updateNotificationPreferences,
 } from "@/src/db/queries";
-import { requireAuth } from "@/src/libs/auth";
+import { requireAuth } from "@/src/lib/auth";
 
 export async function getUserNotificationsAction() {
   const user = await requireAuth();

@@ -9,7 +9,7 @@ import type {
   SignInData,
   SignUpData,
   UpdateProfileData,
-} from "@/src/libs/auth";
+} from "@/src/lib/auth";
 import {
   requestPasswordReset as authRequestPasswordReset,
   signIn as authSignIn,
@@ -18,8 +18,8 @@ import {
   updatePassword as authUpdatePassword,
   updateProfile as authUpdateProfile,
   getCurrentUser,
-} from "@/src/libs/auth";
-import { sendWelcomeEmail } from "@/src/libs/email";
+} from "@/src/lib/auth";
+import { sendWelcomeEmail } from "@/src/lib/email";
 
 export async function signUpAction(data: SignUpData) {
   const result = await authSignUp(data);

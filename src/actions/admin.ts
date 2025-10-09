@@ -2,7 +2,7 @@
 
 // Admin Server Actions
 import { revalidatePath } from "next/cache";
-import type { UserRole } from "@/src/libs/auth";
+import type { UserRole } from "@/src/lib/auth";
 import {
   createUserAsAdmin,
   deleteUser,
@@ -10,7 +10,7 @@ import {
   listUsers,
   requireAdmin,
   updateUserRole,
-} from "@/src/libs/auth";
+} from "@/src/lib/auth";
 
 export async function createUserAction(data: {
   email: string;

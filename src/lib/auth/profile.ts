@@ -1,5 +1,5 @@
 // User profile management functions
-import { createClient } from "@/src/libs/supabase/server";
+import { createClient } from "@/src/lib/supabase/server";
 import type { AuthResult, UpdateProfileData, UserProfile } from "./types";
 import { userToProfile as convertUser } from "./types";
 

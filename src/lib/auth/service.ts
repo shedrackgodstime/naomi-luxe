@@ -1,28 +1,22 @@
-// Admin-only auth functions
-import { adminAuthClient } from "@/src/libs/supabase/admin";
-import type { AuthResult, UserProfile, UserRole } from "./types";
+// Auth service - Part 1: Core authentication functions
+import { createClient } from "@/src/lib/supabase/server";
+import type { AuthResult, SignInData, SignUpData, UserProfile } from "./types";
 import { userToProfile as convertUser } from "./types";
 
-export async function createUserAsAdmin(
-  email: string,
-  password: string,
-  role: UserRole = "customer",
-  metadata?: {
-    fullName?: string;
-    phoneNumber?: string;
-  },
+export async function signUp(
+  data: SignUpData,
 ): Promise<AuthResult<UserProfile>> {
   try {
-    const { data, error } = await adminAuthClient.createUser({
-      email,
-      password,
-      email_confirm: true,
-      user_metadata: {
-        full_name: metadata?.fullName,
-        phone_number: metadata?.phoneNumber,
-      },
-      app_metadata: {
-        role,
+    const supabase = await createClient();
+
+    const { data: authData, error } = await supabase.auth.signUp({
+      email: data.email,
+      password: data.password,
+      options: {
+        data: {
+          full_name: data.fullName,
+          phone_number: data.phoneNumber,
+        },
       },
     });
 
@@ -39,7 +33,7 @@ export async function createUserAsAdmin(
       };
     }
 
-    if (!data.user) {
+    if (!authData.user) {
       return {
         success: false,
         error: {
@@ -51,7 +45,7 @@ export async function createUserAsAdmin(
 
     return {
       success: true,
-      data: convertUser(data.user),
+      data: convertUser(authData.user),
     };
   } catch (error) {
     return {
@@ -65,27 +59,31 @@ export async function createUserAsAdmin(
   }
 }
 
-export async function updateUserRole(
-  userId: string,
-  role: UserRole,
+export async function signIn(
+  data: SignInData,
 ): Promise<AuthResult<UserProfile>> {
   try {
-    const { data, error } = await adminAuthClient.updateUserById(userId, {
-      app_metadata: { role },
+    const supabase = await createClient();
+
+    const { data: authData, error } = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
     });
 
     if (error) {
       return {
         success: false,
         error: {
-          type: "user_not_found",
+          type: error.message.includes("Invalid login credentials")
+            ? "invalid_credentials"
+            : "unknown_error",
           message: error.message,
           details: error,
         },
       };
     }
 
-    if (!data.user) {
+    if (!authData.user) {
       return {
         success: false,
         error: {
@@ -97,7 +95,7 @@ export async function updateUserRole(
 
     return {
       success: true,
-      data: convertUser(data.user),
+      data: convertUser(authData.user),
     };
   } catch (error) {
     return {
@@ -111,15 +109,16 @@ export async function updateUserRole(
   }
 }
 
-export async function deleteUser(userId: string): Promise<AuthResult<void>> {
+export async function signOut(): Promise<AuthResult<void>> {
   try {
-    const { error } = await adminAuthClient.deleteUser(userId);
+    const supabase = await createClient();
+    const { error } = await supabase.auth.signOut();
 
     if (error) {
       return {
         success: false,
         error: {
-          type: "user_not_found",
+          type: "unknown_error",
           message: error.message,
           details: error,
         },
@@ -139,76 +138,38 @@ export async function deleteUser(userId: string): Promise<AuthResult<void>> {
   }
 }
 
-export async function getUserById(
-  userId: string,
-): Promise<AuthResult<UserProfile>> {
+export async function getCurrentUser(): Promise<AuthResult<UserProfile>> {
   try {
-    const { data, error } = await adminAuthClient.getUserById(userId);
+    const supabase = await createClient();
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
 
     if (error) {
       return {
         success: false,
         error: {
-          type: "user_not_found",
+          type: "session_expired",
           message: error.message,
           details: error,
         },
       };
     }
 
-    if (!data.user) {
+    if (!user) {
       return {
         success: false,
         error: {
           type: "user_not_found",
-          message: "User not found",
+          message: "No user session found",
         },
       };
     }
 
     return {
       success: true,
-      data: convertUser(data.user),
-    };
-  } catch (error) {
-    return {
-      success: false,
-      error: {
-        type: "unknown_error",
-        message: error instanceof Error ? error.message : "Unknown error",
-        details: error,
-      },
-    };
-  }
-}
-
-export async function listUsers(
-  page = 1,
-  perPage = 50,
-): Promise<AuthResult<{ users: UserProfile[]; total: number }>> {
-  try {
-    const { data, error } = await adminAuthClient.listUsers({
-      page,
-      perPage,
-    });
-
-    if (error) {
-      return {
-        success: false,
-        error: {
-          type: "unknown_error",
-          message: error.message,
-          details: error,
-        },
-      };
-    }
-
-    return {
-      success: true,
-      data: {
-        users: data.users.map(convertUser),
-        total: data.users.length,
-      },
+      data: convertUser(user),
     };
   } catch (error) {
     return {

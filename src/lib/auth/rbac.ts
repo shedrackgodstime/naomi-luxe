@@ -1,5 +1,5 @@
 // Role-Based Access Control (RBAC) utilities
-import { createClient } from "@/src/libs/supabase/server";
+import { createClient } from "@/src/lib/supabase/server";
 import type { UserProfile, UserRole } from "./types";
 import { userToProfile as convertUser } from "./types";
 

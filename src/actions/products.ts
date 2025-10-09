@@ -10,7 +10,7 @@ import {
   getProductsByCategory,
   updateProduct,
 } from "@/src/db/queries";
-import { requireAdmin } from "@/src/libs/auth";
+import { requireAdmin } from "@/src/lib/auth";
 
 export async function getProductsAction() {
   try {
