@@ -1,26 +1,567 @@
+/* src/styles/globals.css */
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ===== NAOMI LUXE ENHANCED COLOR SYSTEM ===== */
+  
+  /* Core Brand Colors */
+  --gold-primary: #C6A664;      /* Signature luxury gold */
+  --gold-secondary: #B8A16A;    /* Supporting gold tone */
+  --bronze-accent: #8B7355;     /* Fashion depth */
+  --beige-soft: #E2D4B7;        /* Beauty softness */
+  --cream-bg: #FDFBF7;          /* Warm background */
+  
+  /* Gold Palette */
+  --gold-50: #fdfaf3;
+  --gold-100: #faf4e6;
+  --gold-200: #f5e9cc;
+  --gold-300: #efd9a8;
+  --gold-400: #e2c67c;
+  --gold-500: #c6a664;
+  --gold-600: #b08a4a;
+  --gold-700: #8f6d3a;
+  --gold-800: #765732;
+  --gold-900: #63482c;
+  
+  /* Functional Colors */
+  --background: #FDFBF7;        /* Warm cream background */
+  --foreground: #1A1A1A;        /* Rich black for text */
+  --card: #FFFFFF;              /* Pure white for cards */
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #C6A664;           /* Main brand gold */
+  --primary-foreground: #000000;
+  --secondary: #8B7355;         /* Bronze accent */
+  --secondary-foreground: #FFFFFF;
+  --muted: #666666;             /* Muted text */
+  --muted-foreground: #666666;
+  --accent: #E2D4B7;            /* Soft beige */
+  --accent-foreground: #1A1A1A;
+  --destructive: #DC2626;
+  --border: #F0EDE5;            /* Subtle borders */
+  --input: #FFFFFF;
+  --ring: #C6A664;
+  
+  /* State Colors */
+  --success: #10B981;           /* Booking confirmations */
+  --warning: #F59E0B;           /* Limited stock */
+  --error: #DC2626;             /* Booking conflicts */
+  
+  /* Border radius */
+  --radius: 1rem; /* rounded-2xl equivalent */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
 }
 
 @theme inline {
+  /* ===== COLOR SYSTEM ===== */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* State Colors */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  
+  /* Gold Palette */
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
+  
+  /* ===== TYPOGRAPHY ===== */
+  --font-family-heading: 'Playfair Display', serif;
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-accent: 'Great Vibes', cursive;
+  --font-family-ui: 'Inter', sans-serif; /* For prices, buttons */
+  
+  /* ===== LAYOUT ===== */
+  --container-max-width: 1400px;
+  --radius-sm: calc(var(--radius) - 0.5rem);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.5rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===== CUSTOM UTILITIES FOR NAOMI LUXE ===== */
+
+@utility container-custom {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  @media (width >= 640px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  @media (width >= 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
+
+@utility section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  
+  @media (width >= 1024px) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@utility section-padding-sm {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  
+  @media (width >= 1024px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* ===== CONTEXT-SPECIFIC SECTIONS ===== */
+
+@utility beauty-section {
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+@utility fashion-section {
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+@utility booking-section {
+  background: linear-gradient(135deg, var(--color-background) 0%, white 100%);
+}
+
+/* ===== BUTTON VARIANTS ===== */
+
+@utility btn-booking {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-family: var(--font-family-ui);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px 0 rgba(198, 166, 100, 0.3);
+  
+  &:hover {
+    background-color: var(--color-foreground);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px 0 rgba(198, 166, 100, 0.4);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@utility btn-shop {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-family: var(--font-family-ui);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-family: var(--font-family-ui);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: var(--color-foreground);
+    transform: translateY(-1px);
+  }
+}
+
+/* ===== CARD VARIANTS ===== */
+
+@utility card-beauty {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+  border: 1px solid var(--color-accent);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    transform: translateY(-0.25rem);
+  }
+}
+
+@utility card-fashion {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.08);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    transform: translateY(-0.5rem);
+  }
+}
+
+@utility card-product {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px -1px rgb(0 0 0 / 0.04);
+  border: 1px solid var(--color-border);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: 0 20px 40px -8px rgb(0 0 0 / 0.12);
+    transform: translateY(-0.375rem);
+  }
+}
+
+/* ===== EFFECTS & ANIMATIONS ===== */
+
+@utility glassmorphism {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@utility gold-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold-300) 50%, var(--color-primary) 100%);
+}
+
+@utility gold-gradient-subtle {
+  background: linear-gradient(135deg, var(--color-gold-50) 0%, var(--color-background) 100%);
+}
+
+@utility shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@utility gold-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(198, 166, 100, 0.2), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.7s ease-out;
+}
+
+@utility animate-slide-left {
+  animation: slideInLeft 0.7s ease-out;
+}
+
+@utility animate-slide-right {
+  animation: slideInRight 0.7s ease-out;
+}
+
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@utility animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+/* ===== TYPOGRAPHY UTILITIES ===== */
+
+@utility text-display {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+@utility text-body {
+  font-family: var(--font-family-body);
+  line-height: 1.6;
+}
+
+@utility text-accent {
+  font-family: var(--font-family-accent);
+  font-weight: 400;
+}
+
+@utility text-ui {
+  font-family: var(--font-family-ui);
+  font-weight: 500;
+}
+
+/* ===== FORM STYLES ===== */
+
+@utility input-luxe {
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-family-body);
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(198, 166, 100, 0.1);
+  }
+}
+
+@utility select-luxe {
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-family-body);
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(198, 166, 100, 0.1);
+  }
+}
+
+/* ===== BASE STYLES ===== */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-body);
+  line-height: 1.6;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  
+  @media (width >= 768px) {
+    font-size: 3.5rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  
+  @media (width >= 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+/* ===== FOCUS & ACCESSIBILITY ===== */
+
+*:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===== SELECTION STYLES ===== */
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-600);
+}
+
+/* ===== UTILITY CLASSES FOR QUICK USE ===== */
+
+.gold-text {
+  color: var(--color-primary);
+}
+
+.bronze-text {
+  color: var(--color-secondary);
+}
+
+.beige-bg {
+  background-color: var(--color-accent);
+}
+
+.cream-bg {
+  background-color: var(--color-background);
+}
+
+.border-luxe {
+  border-color: var(--color-border);
+}
+
+.shadow-luxe {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-luxe-lg {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .card-beauty,
+  .card-fashion,
+  .card-product {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
 }
