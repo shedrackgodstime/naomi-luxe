@@ -1,7 +1,7 @@
 export const site = {
   name: "Naomi Luxe",
   tagline: "Luxury Beauty & Fashion",
-  url: "https://naomi-luxe.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://naomi-luxe.com",
   phone: "+234-800-000-0000",
   email: "info@naomi-luxe.com",
   address: "123 Elegance Avenue, Lagos, Nigeria",

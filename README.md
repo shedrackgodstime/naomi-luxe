@@ -148,6 +148,10 @@ This project includes comprehensive documentation in the `README/` directory:
 ### 📋 Core Documentation
 - **[PROJECT_PLAN.md](./README/PROJECT_PLAN.md)** - Complete project overview and roadmap
 - **[DATABASE-PLAN.md](./README/DATABASE-PLAN.md)** - Database schema and storage structure
+- **[AUTH_SETUP.md](./README/AUTH_SETUP.md)** - Complete authentication system guide
+- **[SERVER_ACTIONS.md](./README/SERVER_ACTIONS.md)** - Server Actions guide (no API routes!)
+- **[STORAGE_SETUP.md](./README/STORAGE_SETUP.md)** - File upload & storage system
+- **[EMAIL_SETUP.md](./README/EMAIL_SETUP.md)** - Email system with React Email & Brevo
 - **[NOTIFICATIONS_SETUP.md](./README/NOTIFICATIONS_SETUP.md)** - Advanced notification system guide
 - **[DRIZZLE_SETUP.md](./README/DRIZZLE_SETUP.md)** - Database ORM setup and usage
 
